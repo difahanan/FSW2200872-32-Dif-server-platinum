@@ -81,4 +81,7 @@ router.post('/game/insert-score', GameController.insertGameScore);
 router.get('/usergame/played/:id', UserGamesController.getUserPlayedGames);
 router.get('/usergame/totalskor/:id', UserGamesController.totalSkorUser);
 
+/* router untuk mengambil audio dari firebase */
+router.get('/audio/get', GameController.getRPSAudio);
+
 module.exports = router;
