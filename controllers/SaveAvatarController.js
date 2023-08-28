@@ -15,7 +15,7 @@ class SaveAvatar {
                 const id = Number(req.query.id)
 
                 // upload photo to Firebase
-                await uploadFile(files.avatar.filepath, `avatar/user${id}`);
+                await uploadFile(files.avatar.filepath, `avatar/user${id}`, 'image/png');
 
                 // get the Firebase url
                 const fileUrl = await downloadFile(`avatar/user${id}`);
