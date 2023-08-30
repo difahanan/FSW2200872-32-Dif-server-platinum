@@ -3,7 +3,6 @@ const { userModel } = require('../models/UserModel');
 const { biodataUser } = require('../models/biodataUser');
 const { ProfilePageModel } = require('../models/profilePage');
 
-
 class ProfilePageController {
     
     // get data dan biodata user
@@ -76,7 +75,6 @@ class ProfilePageController {
 
             return res.status(200).json({ status: "success", username: newUsername ? newUsername : existingUser.username });                
             
-
         } catch (error) {
             console.log(error);
             res.status(500).json({ status: 'failed', message: 'Update Profile Failed' })

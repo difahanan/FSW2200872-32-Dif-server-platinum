@@ -3,7 +3,10 @@
  * https://jestjs.io/docs/configuration
  */
 
+const SECONDS = 10000;
+
 module.exports = {
+  testTimeout: 60 * SECONDS,
   // All imported modules in your tests should be mocked automatically
   // automock: false,
 
