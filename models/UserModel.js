@@ -28,6 +28,10 @@ class UserModel {
             type: DataTypes.TEXT,
             allowNull: true
         },
+        video: {
+            type: DataTypes.TEXT,
+            allowNull: true
+        },
         createdAt: {
             allowNull: false,
             type: DataTypes.DATE
@@ -144,6 +148,38 @@ class UserModel {
                 },
                 { where: {id} }
             )
+        } catch(error) {
+            console.log(error)
+            return error
+        }
+    }
+
+    //save video by id
+    async saveVideo(id, video) {
+        try {
+            await this.#model.update({
+                video,
+                updatedAt: Sequelize.literal('NOW()')
+            }, {
+                where: { id }
+            });
+        } catch (error) {
+            console.log(error);
+            return error;
+        }
+    }    
+
+    //get video berdasarkan id
+    async getVideo(id, username){
+        try{           
+            const data = await this.#model.findOne({
+                where:{[Op.or]: [
+                    { id }, 
+                        ]},
+                attributes: ['video'],
+                raw: true
+            })
+            return data
         } catch(error) {
             console.log(error)
             return error

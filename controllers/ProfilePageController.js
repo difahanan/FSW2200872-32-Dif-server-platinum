@@ -49,13 +49,14 @@ class ProfilePageController {
             // Mengambil data eksisting dari kedua tabel
             const existingUser = await ProfilePageModel.getUserData(userId);            
 
-            // Update tabel user jika ada email/username yang diganti
+            // Update tabel user jika ada email/username/video yang diganti
             if (newUsername !== "" || newEmail !== "") {
                 const updatedUserData = {
                     username: newUsername ? newUsername : existingUser.username, 
-                    email: newEmail ? newEmail : existingUser.email
+                    email: newEmail ? newEmail : existingUser.email,
+                    videoUrl: newVideoUrl ? newVideoUrl : existingUser.videoUrl
                 }
-                await userModel.updateData(userId, updatedUserData.username, updatedUserData.email)
+                await userModel.updateData(userId, updatedUserData.username, updatedUserData.email, updatedUserData.videoUrl)
             }
 
             // Update tabel biodata jika ada umur/city/country yang diganti
@@ -82,7 +83,6 @@ class ProfilePageController {
         }
     }
 
-
     // get user history game 
     static async getUserHistory(req,res) {
         try{
@@ -98,7 +98,6 @@ class ProfilePageController {
             return res.status(500).send(' Internal Server Error !');
          }
     }
-
 }
 
 module.exports = { ProfilePageController }

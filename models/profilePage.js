@@ -51,8 +51,6 @@ class ProfilePageModel {
         }
     }
 
-
-
     // get user game history data
     static async getUserGameHistory(userId) {
         try {
@@ -90,6 +88,30 @@ class ProfilePageModel {
         }
     }
 
+    // get user video data
+    static async getVideoUrl(userId) {
+        try {
+            // Get the user model instance  
+            const userModelInstance = userModel.getVideo();
+    
+            // Query the user table
+            const user = await userModelInstance.findOne({
+                where: { id: userId },
+                attributes: ['video'],
+                raw: true 
+            });
+            if (user) {
+                return user.video;
+            } else {
+                return null; 
+            }
+    
+        } catch (error) {
+            console.log(error);
+            return null;
+    }
+    
+    }
 }
 
     

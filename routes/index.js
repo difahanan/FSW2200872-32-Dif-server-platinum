@@ -10,6 +10,7 @@ const { ProfilePageController } = require('../controllers/ProfilePageController'
 const { SaveAvatar } = require('../controllers/SaveAvatarController')
 const { GameController } = require('../controllers/GameController')
 const { UserGamesController } = require('../controllers/UserGamesController')
+const { SaveVideo} = require('../controllers/VideoController')
 
 // import functions related with avatar
 const { userModel } = require('../models/UserModel')
@@ -69,6 +70,8 @@ router.get('/profile/get/:id', ProfilePageController.getProfilePage );
 router.post('/profile/upsert/:id', ProfilePageController.upsertProfile );
 router.get('/profile/history/:id', ProfilePageController.getUserHistory );
 router.post('/avatar/save', SaveAvatar.postAvatar);
+router.get('/profile/video/:id', SaveVideo.getUserVideoUrl);
+router.post('/video/save', SaveVideo.postVideo);
 
 /* router untuk komponen game page */
 router.get('/gamelist/get', GameController.getGameList);
@@ -80,8 +83,5 @@ router.post('/game/insert-score', GameController.insertGameScore);
 /* router untuk komponen game terkait dengan user */
 router.get('/usergame/played/:id', UserGamesController.getUserPlayedGames);
 router.get('/usergame/totalskor/:id', UserGamesController.totalSkorUser);
-
-/* router untuk mengambil audio dari firebase */
-router.get('/audio/get', GameController.getRPSAudio);
 
 module.exports = router;
