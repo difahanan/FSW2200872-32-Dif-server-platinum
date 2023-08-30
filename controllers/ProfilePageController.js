@@ -49,14 +49,13 @@ class ProfilePageController {
             // Mengambil data eksisting dari kedua tabel
             const existingUser = await ProfilePageModel.getUserData(userId);            
 
-            // Update tabel user jika ada email/username/video yang diganti
+            // Update tabel user jika ada email/username yang diganti
             if (newUsername !== "" || newEmail !== "") {
                 const updatedUserData = {
                     username: newUsername ? newUsername : existingUser.username, 
                     email: newEmail ? newEmail : existingUser.email,
-                    videoUrl: newVideoUrl ? newVideoUrl : existingUser.videoUrl
                 }
-                await userModel.updateData(userId, updatedUserData.username, updatedUserData.email, updatedUserData.videoUrl)
+                await userModel.updateData(userId, updatedUserData.username, updatedUserData.email)
             }
 
             // Update tabel biodata jika ada umur/city/country yang diganti
