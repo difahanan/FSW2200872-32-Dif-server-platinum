@@ -11,6 +11,7 @@ const { SaveAvatar } = require('../controllers/SaveAvatarController')
 const { GameController } = require('../controllers/GameController')
 const { UserGamesController } = require('../controllers/UserGamesController')
 const { SaveVideo } = require('../controllers/VideoController')
+const { AudioController } = require('../controllers/AudioController')
 
 // import functions related with avatar
 const { userModel } = require('../models/UserModel')
@@ -84,6 +85,7 @@ router.get('/usergame/played/:id', UserGamesController.getUserPlayedGames)
 router.get('/usergame/totalskor/:id', UserGamesController.totalSkorUser)
 
 /* router untuk mengambil audio dari firebase */
-router.get('/audio/get', GameController.getRPSAudio)
+router.get('/audio/get', AudioController.getRPSAudio)
+router.post('/audio/save', AudioController.postAudio)
 
 module.exports = router

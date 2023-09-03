@@ -32,6 +32,10 @@ class UserModel {
       type: DataTypes.TEXT,
       allowNull: true
     },
+    audio: {
+      type: DataTypes.TEXT,
+      allowNull: true
+    },
     createdAt: {
       allowNull: false,
       type: DataTypes.DATE
@@ -43,7 +47,7 @@ class UserModel {
   })
 
   // insert data
-  async insertData (email, username, password) {
+  async insertData(email, username, password) {
     try {
       const insertData = await this.#model.create({ email, username, password })
       return insertData
@@ -54,7 +58,7 @@ class UserModel {
   }
 
   // get data by username
-  async getData (username) {
+  async getData(username) {
     try {
       const data = await this.#model.findOne({
         where: {
@@ -71,7 +75,7 @@ class UserModel {
   }
 
   // get data by id
-  async getDataByPk (userId) {
+  async getDataByPk(userId) {
     try {
       const data = await this.#model.findByPk(userId, {
         attributes: ['username', 'password', 'id'],
@@ -85,7 +89,7 @@ class UserModel {
   }
 
   // get data by email
-  async getDataByEmail (email) {
+  async getDataByEmail(email) {
     try {
       const data = await this.#model.findOne({
         where: {
@@ -102,19 +106,19 @@ class UserModel {
   }
 
   // get the model
-  async getModel () {
+  async getModel() {
     return this.#model
   }
 
   // update data by id
-  async updateData (id, username, email) {
+  async updateData(id, username, email) {
     try {
       await this.#model.update({
         username,
         email,
         updatedAt: Sequelize.literal('NOW()')
       },
-      { where: { id } }
+        { where: { id } }
       )
     } catch (error) {
       console.log(error)
@@ -123,7 +127,7 @@ class UserModel {
   }
 
   // get avatar by either id or username
-  async getAvatar (id, username) {
+  async getAvatar(id, username) {
     try {
       const data = await this.#model.findOne({
         where: {
@@ -142,13 +146,13 @@ class UserModel {
   }
 
   // save avatar by id
-  async saveAvatar (id, avatarUrl) {
+  async saveAvatar(id, avatarUrl) {
     try {
       await this.#model.update({
         avatar: avatarUrl,
         updatedAt: Sequelize.literal('NOW()')
       },
-      { where: { id } }
+        { where: { id } }
       )
     } catch (error) {
       console.log(error)
@@ -157,7 +161,7 @@ class UserModel {
   }
 
   // save video by id
-  async saveVideo (id, video) {
+  async saveVideo(id, video) {
     try {
       await this.#model.update({
         video,
@@ -171,10 +175,6 @@ class UserModel {
     }
   }
 
-<<<<<<< Updated upstream
-  // get video berdasarkan id
-  async getVideo (id, username) {
-=======
   // save audio by id
   async saveAudio (id, audio) {
     try {
@@ -192,7 +192,6 @@ class UserModel {
 
   // get video berdasarkan id
   async getVideo (id) {
->>>>>>> Stashed changes
     try {
       const data = await this.#model.findOne({
         where: { id },
@@ -205,11 +204,24 @@ class UserModel {
       return error
     }
   }
-<<<<<<< Updated upstream
-=======
 
-  // get audio berdasarkan id
-  async getAudio (id) {
+  // save audio by id
+  async saveAudio(id, audio) {
+    try {
+      await this.#model.update({
+        audio,
+        updatedAt: Sequelize.literal('NOW()')
+      }, {
+        where: { id }
+      })
+    } catch (error) {
+      console.log(error)
+      return error
+    }
+  }
+
+  // get video berdasarkan id
+  async getVideo(id, username) {
     try {
       const data = await this.#model.findOne({
         where: {
@@ -224,7 +236,23 @@ class UserModel {
       return error
     }
   }
->>>>>>> Stashed changes
+
+  // get audio berdasarkan id
+  async getAudio(id) {
+    try {
+      const data = await this.#model.findOne({
+        where: {
+          id
+        },
+        attributes: ['audio'],
+        raw: true
+      })
+      return data
+    } catch (error) {
+      console.log(error)
+      return error
+    }
+  }
 }
 
 // EXPORTS MODEL NYA
