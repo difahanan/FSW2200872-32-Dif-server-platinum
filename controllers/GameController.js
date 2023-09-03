@@ -2,21 +2,8 @@
 const { gameListModel } = require('../models/gameListModel')
 const { historyUser } = require('../models/history')
 const { gameLeaderboard } = require('../models/gameLeaderboard')
-const { downloadFile } = require('../lib/Firebase')
 
 class GameController {
-  // controller untuk mengambil audio untuk game
-  static async getRPSAudio (req, res) {
-    try {
-      const audioURL = await downloadFile('audio/rps-music.mp3')
-
-      return res.json({ audioURL: audioURL[0] })
-    } catch (error) {
-      console.error('Error fetching audio from Firebase:', error)
-      res.status(500).json({ error: 'Internal Server Error' })
-    }
-  }
-
   // controller untuk melihat gameList
   static async getGameList (req, res) {
     try {
