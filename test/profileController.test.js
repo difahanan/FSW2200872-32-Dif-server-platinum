@@ -10,7 +10,7 @@ describe('TSP-01: This testing is for get profile API', () => {
     const respons = await request.get(`/profile/get/${userId}`)
 
     // Jika api-nya ngasih respons status 200
-    console.log(respons)
+    // console.log(respons)
     expect(respons.status).toBe(200)
 
     // Isi datanya harus berupa object yg punya key data
@@ -43,7 +43,7 @@ describe('TSP-02: This testing is for post profile API', () => {
     })
 
     // Jika api-nya ngasih respons status 200
-    console.log(respons)
+    // console.log(respons)
     expect(respons.status).toBe(200)
 
     // Isi datanya harus berupa object yg punya key username

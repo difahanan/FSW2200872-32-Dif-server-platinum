@@ -65,7 +65,7 @@ class PassportMainController {
       const email = data.email
       const username = data.username
       const password = data.password
-      const confirmPassword = data.confirmPassword
+      const confirmPassword = data.confirm_password
       // VALIDASI INPUT USER
       if (password !== confirmPassword) {
         return res.status(400).json({ status: 'failed', message: 'PASSWORD AND CONFIRMATION PASSWORD DO NOT MATCH' })

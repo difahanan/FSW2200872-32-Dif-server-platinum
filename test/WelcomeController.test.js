@@ -10,7 +10,7 @@ describe('TWC-01: Test main api connection in endpoint (/)', function () {
     const response = await request.get('/')
 
     // check the result
-    console.log(response)
+    // console.log(response)
 
     // expect the status
     expect(response.status).toBe(200)

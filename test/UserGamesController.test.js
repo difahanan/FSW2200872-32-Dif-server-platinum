@@ -11,7 +11,7 @@ describe('TUG-01: Test to get games that has been played by a user', function ()
     const response = await request.get(`/usergame/played/${userId}`)
 
     // check the result
-    console.log(response)
+    // console.log(response)
 
     // expect the status
     expect(response.status).toBe(200)
@@ -31,7 +31,7 @@ describe('TUG-01: Test to get games that has been played by a user', function ()
     const response = await request.get(`/usergame/played/${userId}`)
 
     // check the result
-    console.log(response)
+    // console.log(response)
 
     // expect the status
     expect(response.status).toBe(500)
@@ -48,7 +48,7 @@ describe('TUG-02: Test to get total score per user', function () {
     const response = await request.get(`/usergame/totalskor/${userId}`)
 
     // check the result
-    console.log(response)
+    // console.log(response)
 
     // expect the status
     expect(response.status).toBe(200)
@@ -66,7 +66,7 @@ describe('TUG-02: Test to get total score per user', function () {
     const response = await request.get(`/usergame/totalskor/${userId}`)
 
     // check the result
-    console.log(response)
+    // console.log(response)
 
     // expect the status
     expect(response.status).toBe(200)

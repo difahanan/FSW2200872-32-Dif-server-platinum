@@ -67,7 +67,7 @@ describe('TLP-03: Test to get player trending games list', function () {
     const response = await request.get('/gamelist/trending')
 
     // check the result
-    console.log(response)
+    // console.log(response)
 
     // expect the status
     expect(response.status).toBe(200)
@@ -99,7 +99,7 @@ describe('TLP-04: Test to get player popular games list', function () {
     const response = await request.get('/gamelist/popular')
 
     // check the result
-    console.log(response)
+    // console.log(response)
 
     // expect the status
     expect(response.status).toBe(200)
@@ -125,13 +125,13 @@ describe('TLP-04: Test to get player popular games list', function () {
   })
 })
 
-describe('TLP-05: Test to get player commingsoon games list', function () {
-  it('Positive case: get 3 games for commingsoon games list', async function () {
+describe('TLP-05: Test to get player comingsoon games list', function () {
+  it('Positive case: get 3 games for comingsoon games list', async function () {
     // hit the API
-    const response = await request.get('/gamelist/commingsoon')
+    const response = await request.get('/gamelist/comingsoon')
 
     // check the result
-    console.log(response)
+    // console.log(response)
 
     // expect the status
     expect(response.status).toBe(200)
@@ -152,7 +152,7 @@ describe('TLP-05: Test to get player commingsoon games list', function () {
 
     // expect the game type are all trending
     response._body.data.map((game) => {
-      expect(game.game_type).toBe('commingsoon')
+      expect(game.game_type).toBe('comingsoon')
     })
   })
 })

@@ -171,15 +171,31 @@ class UserModel {
     }
   }
 
+<<<<<<< Updated upstream
   // get video berdasarkan id
   async getVideo (id, username) {
+=======
+  // save audio by id
+  async saveAudio (id, audio) {
+    try {
+      await this.#model.update({
+        audio,
+        updatedAt: Sequelize.literal('NOW()')
+      }, {
+        where: { id }
+      })
+    } catch (error) {
+      console.log(error)
+      return error
+    }
+  }
+
+  // get video berdasarkan id
+  async getVideo (id) {
+>>>>>>> Stashed changes
     try {
       const data = await this.#model.findOne({
-        where: {
-          [Op.or]: [
-            { id }
-          ]
-        },
+        where: { id },
         attributes: ['video'],
         raw: true
       })
@@ -189,6 +205,26 @@ class UserModel {
       return error
     }
   }
+<<<<<<< Updated upstream
+=======
+
+  // get audio berdasarkan id
+  async getAudio (id) {
+    try {
+      const data = await this.#model.findOne({
+        where: {
+          id
+        },
+        attributes: ['audio'],
+        raw: true
+      })
+      return data
+    } catch (error) {
+      console.log(error)
+      return error
+    }
+  }
+>>>>>>> Stashed changes
 }
 
 // EXPORTS MODEL NYA
