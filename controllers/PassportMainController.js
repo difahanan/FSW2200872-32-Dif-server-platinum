@@ -12,6 +12,7 @@ class PassportMainController {
         return res.json({
           status: 'success',
           isLoggedIn: true,
+          // isLoggedIn: false
           data: {
             id: req.user.id,
             username: req.user.username

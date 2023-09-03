@@ -162,7 +162,7 @@ describe('TPM-02: Ini adalah pengujian untuk API login', function () {
     expect(response.status).toBe(401)
   })
 
-  it('Kasus negatif: user memasukkan PASSWORD yang salah', async function () {
+  it('Kasus negatif2: user memasukkan PASSWORD yang salah', async function () {
     const response = await request.post('/login').send({
       username: 'megalodon',
       password: 'QQqq!!11A'
