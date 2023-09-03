@@ -13,7 +13,7 @@ class AudioController {
       const id = Number(req.query.id)
       // Get audio URL for the user
       const audioURL = await userModel.getAudio(id)
-      if (audioURL === null) {
+      if (audioURL.audio === null) {
         const audioURL = await downloadFile('audio/rps-music.mp3')
         return res.json({ audioURL: audioURL[0] })
       } else {
@@ -39,14 +39,13 @@ class AudioController {
 
         // get the Firebase url
         const fileUrl = await downloadFile(`audio/user${id}`)
-        console.log('fileurl:', fileUrl)
 
         // save the URL to database
         await userModel.saveAudio(id, fileUrl[0])
 
         // get updated data list
         setTimeout(async function () {
-          const userdata = await userModel.getAudio(id, '')
+          const userdata = await userModel.getAudio(id)
           res.status(200).json({ status: 'success', data: { audioURL: userdata.audio } })
         }, 2000)
       })
