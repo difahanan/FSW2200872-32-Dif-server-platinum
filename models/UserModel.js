@@ -176,6 +176,36 @@ class UserModel {
   }
 
   // save audio by id
+  async saveAudio (id, audio) {
+    try {
+      await this.#model.update({
+        audio,
+        updatedAt: Sequelize.literal('NOW()')
+      }, {
+        where: { id }
+      })
+    } catch (error) {
+      console.log(error)
+      return error
+    }
+  }
+
+  // get video berdasarkan id
+  async getVideo (id) {
+    try {
+      const data = await this.#model.findOne({
+        where: { id },
+        attributes: ['video'],
+        raw: true
+      })
+      return data
+    } catch (error) {
+      console.log(error)
+      return error
+    }
+  }
+
+  // save audio by id
   async saveAudio(id, audio) {
     try {
       await this.#model.update({
@@ -195,11 +225,9 @@ class UserModel {
     try {
       const data = await this.#model.findOne({
         where: {
-          [Op.or]: [
-            { id }
-          ]
+          id
         },
-        attributes: ['video'],
+        attributes: ['audio'],
         raw: true
       })
       return data

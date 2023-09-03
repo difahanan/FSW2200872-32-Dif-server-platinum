@@ -8,7 +8,7 @@ const { uploadFile, downloadFile } = require('../lib/Firebase')
 
 class AudioController {
   // controller untuk mengambil audio untuk game
-  static async getRPSAudio(req, res) {
+  static async getRPSAudio (req, res) {
     try {
       const id = Number(req.query.id)
       // Get audio URL for the user
@@ -17,17 +17,16 @@ class AudioController {
         const audioURL = await downloadFile('audio/rps-music.mp3')
         return res.json({ audioURL: audioURL[0] })
       } else {
-        return res.json({ audioURL: audioURL })
+        return res.json({ audioURL })
       }
-
     } catch (error) {
       console.error('Error fetching audio from Firebase:', error)
       res.status(500).json({ error: 'Internal Server Error' })
     }
   }
 
-  // controller untuk upload audio 
-  static async postAudio(req, res) {
+  // controller untuk upload audio
+  static async postAudio (req, res) {
     try {
       const form = new formidable.IncomingForm()
 
