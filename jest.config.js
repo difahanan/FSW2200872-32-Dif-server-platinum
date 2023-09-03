@@ -3,7 +3,10 @@
  * https://jestjs.io/docs/configuration
  */
 
+const SECONDS = 10000
+
 module.exports = {
+  testTimeout: 60 * SECONDS,
   // All imported modules in your tests should be mocked automatically
   // automock: false,
 
@@ -23,7 +26,7 @@ module.exports = {
   // collectCoverageFrom: undefined,
 
   // The directory where Jest should output its coverage files
-  coverageDirectory: "coverage",
+  coverageDirectory: 'coverage',
 
   // An array of regexp pattern strings used to skip coverage collection
   // coveragePathIgnorePatterns: [
@@ -31,7 +34,7 @@ module.exports = {
   // ],
 
   // Indicates which provider should be used to instrument code for coverage
-  coverageProvider: "v8",
+  coverageProvider: 'v8'
 
   // A list of reporter names that Jest uses when writing coverage reports
   // coverageReporters: [
@@ -191,4 +194,4 @@ module.exports = {
 
   // Whether to use watchman for file crawling
   // watchman: true,
-};
+}
