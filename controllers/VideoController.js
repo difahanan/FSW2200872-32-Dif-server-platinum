@@ -37,22 +37,6 @@ class SaveVideo {
       res.render('error', { error, message: 'SAVE FILE ERROR' })
     }
   }
-
-  // Get user video URL
-  static async getUserVideoUrl (req, res) {
-    try {
-      const userId = Number(req.params.id)
-
-      // Get video URL for the user
-      const video = await ProfilePageModel.getVideoUrl(userId)
-
-      // Send the video URL to the client
-      return res.json({ status: 'success', video })
-    } catch (error) {
-      console.log(error)
-      return res.status(500).send('Internal Server Error!')
-    }
-  }
 }
 
 module.exports = { SaveVideo }
