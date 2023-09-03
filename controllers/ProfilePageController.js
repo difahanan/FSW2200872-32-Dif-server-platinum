@@ -66,7 +66,7 @@ class ProfilePageController {
             city: newCity || existingUser.city,
             country: newCountry || existingUser.country
           }
-          const updateProfile = await biodataUser.updateData(userId, updatedBiodata.umur, updatedBiodata.city, updatedBiodata.country)
+          await biodataUser.updateData(userId, updatedBiodata.umur, updatedBiodata.city, updatedBiodata.country)
         }
       }
 

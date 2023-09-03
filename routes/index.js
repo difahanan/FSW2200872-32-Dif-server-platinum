@@ -73,13 +73,11 @@ router.get('/profile/get/:id', ProfilePageController.getProfilePage)
 router.post('/profile/upsert/:id', ProfilePageController.upsertProfile)
 router.get('/profile/history/:id', ProfilePageController.getUserHistory)
 router.post('/avatar/save', SaveAvatar.postAvatar)
-router.get('/profile/video/:id', SaveVideo.getUserVideoUrl)
 router.post('/video/save', SaveVideo.postVideo)
 
 /* router untuk komponen game page */
 router.get('/gamelist/get', GameController.getGameList)
 router.get('/gamelist/leaderboard/:gameId', GameController.getGameLeaderboard)
-router.post('/rps/insert-score', GameController.insertRPSscore)
 router.post('/game/insert-score', GameController.insertGameScore)
 
 /* router untuk komponen game terkait dengan user */

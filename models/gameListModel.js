@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const { DataTypes, Op } = require('sequelize')
 const { sequelizeReader } = require('../config/dbReader')
 

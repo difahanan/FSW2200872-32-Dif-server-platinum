@@ -34,36 +34,20 @@ class GameController {
   }
 
   // controller to insert game score
-  static async insertRPSscore (req, res) {
-    try {
-      const data = req.body
-      const user_id = Number(data.user_id)
-      const game_id = Number(data.game_id)
-      const total_ronde = Number(data.total_ronde)
-      const user_skor = Number(data.skor)
-      await historyUser.insertScore(user_id, game_id, total_ronde, user_skor)
-      return res.json({ status: 'success', message: 'Score updated!' })
-    } catch (error) {
-      console.log(error)
-      return res.status(500).send(' Internal Server Error !')
-    }
-  }
-
-  // controller to insert game score
   static async insertGameScore (req, res) {
     try {
       const data = req.body
-      const user_id = Number(data.user_id)
-      const game_url = data.game_url
-      const total_ronde = Number(data.total_ronde)
-      const user_skor = Number(data.skor)
+      const userId = Number(data.userId)
+      const gameUrl = data.gameUrl
+      const totalRonde = Number(data.totalRonde)
+      const userSkor = Number(data.skor)
 
-      // get game_id from game_url info
-      const gameId = await gameListModel.getGameId(game_url)
+      // get game_id from gameUrl info
+      const gameId = await gameListModel.getGameId(gameUrl)
 
       // insert data game to history table
       setTimeout(async () => {
-        await historyUser.insertScore(user_id, gameId.gameid, total_ronde, user_skor)
+        await historyUser.insertScore(userId, gameId.gameid, totalRonde, userSkor)
         return res.json({ status: 'success', message: 'Score updated!' })
       }, 2000)
     } catch (error) {
@@ -72,5 +56,4 @@ class GameController {
     }
   }
 }
-
 module.exports = { GameController }
