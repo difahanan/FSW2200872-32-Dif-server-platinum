@@ -46,7 +46,7 @@ describe('TPM-01: Ini adalah pengujian untuk API register', function () {
     })
 
     // Pastikan status respons adalah 400
-    console.log(response)
+    // console.log(response)
     expect(response.status).toBe(400)
 
     // Pastikan teks respons sudah didefinisikan

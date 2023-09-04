@@ -43,11 +43,7 @@ class AudioController {
         // save the URL to database
         await userModel.saveAudio(id, fileUrl[0])
 
-        // get updated data list
-        setTimeout(async function () {
-          const userdata = await userModel.getAudio(id, '')
-          res.status(200).json({ status: 'success', data: { audioURL: userdata.audio } })
-        }, 2000)
+        res.status(200).json({ status: 'success', message: 'New audio uploaded' })
       })
     } catch (error) {
       console.log(error)
