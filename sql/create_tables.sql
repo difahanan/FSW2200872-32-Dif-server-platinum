@@ -4,6 +4,8 @@ CREATE TABLE public."user" (
 	"password" varchar NOT NULL,
 	email varchar NOT NULL,
 	avatar text NULL, 
+	video text NULL, 
+	audio text NULL, 
 	created_at timestamptz NOT NULL DEFAULT NOW(),
 	updated_at timestamptz NOT NULL DEFAULT NOW(),
 	CONSTRAINT user_pk PRIMARY KEY (id)
